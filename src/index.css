@@ -1,0 +1,36 @@
+@import "tailwindcss";
+
+@theme {
+  --font-display: "Fraunces", Georgia, serif;
+  --font-sans: "Inter", system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, monospace;
+  --color-paper: #f6f2ea;
+  --color-ink: #0f1b2d;
+  --color-ink-soft: #3d4a5f;
+  --color-line: #ddd5c4;
+  --color-gold: #b9791a;
+  --color-gold-bright: #f2b544;
+}
+
+html { scroll-behavior: smooth; }
+body {
+  background: var(--color-paper);
+  color: var(--color-ink);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+}
+::selection { background: var(--color-gold-bright); color: var(--color-ink); }
+
+/* animasi muncul saat scroll */
+.reveal { opacity: 0; transform: translateY(18px); transition: opacity .7s ease, transform .7s ease; }
+.reveal.in { opacity: 1; transform: none; }
+
+@keyframes bar { from { width: 0 } }
+@keyframes blink { 50% { opacity: .25 } }
+.blink { animation: blink 1.6s infinite; }
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .reveal { opacity: 1; transform: none; transition: none; }
+  .blink { animation: none; }
+}
